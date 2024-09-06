@@ -1,4 +1,5 @@
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
+import SpotlightPiece from "@/components/SpotlightPiece/SpotlightPiece";
 import useSWR from "swr";
 
 const URL = "https://example-apis.vercel.app/api/art";
@@ -27,6 +28,7 @@ export default function HomePage() {
   }
   return (
     <div>
+      <SpotlightPiece pieces={data} />
       <ArtPieces pieces={data} />
     </div>
   );
