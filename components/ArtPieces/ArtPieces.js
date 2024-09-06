@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 export default function ArtPieces({ pieces }) {
   return (
     <>
@@ -7,14 +7,11 @@ export default function ArtPieces({ pieces }) {
           return (
             <>
               <li key={piece.slug}>
-                <Image
-                  src={piece.imageSource}
-                  height={144}
-                  width={144}
-                  alt={`Picture of ${piece.name}`}
+                <ArtPiecePreview
+                  image={piece.imageSource}
+                  title={piece.name}
+                  artist={piece.artist}
                 />
-                <h3>{piece.name}</h3>
-                <p>{piece.artist}</p>
               </li>
             </>
           );
