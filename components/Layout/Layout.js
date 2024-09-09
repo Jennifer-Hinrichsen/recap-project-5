@@ -19,7 +19,6 @@ const StyledContainer = styled.div`
 const StyledNavigation = styled(Navigation)`
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
   background-color: lightgrey;
   z-index: 1000;
