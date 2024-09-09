@@ -6,7 +6,7 @@ export default function Navigation({ className }) {
     <nav className={className}>
       <StyledNavList>
         <StyledNavListItem>
-          <StyledLink href="#">Spotlight</StyledLink>
+          <StyledLink href="/">Spotlight</StyledLink>
         </StyledNavListItem>
         <StyledNavListItem>
           <StyledLink href="/art-pieces">Art Pieces</StyledLink>

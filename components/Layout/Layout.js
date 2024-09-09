@@ -13,11 +13,14 @@ export default function Layout({ children }) {
 const StyledContainer = styled.div`
   min-height: 100vh;
   position: relative;
+  padding-bottom: 60px;
 `;
 
 const StyledNavigation = styled(Navigation)`
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: lightgrey;
-  width: 100vw;
+  z-index: 1000;
 `;
