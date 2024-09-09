@@ -1,4 +1,3 @@
-import ArtPieces from "@/components/ArtPieces/ArtPieces";
 import SpotlightPiece from "@/components/SpotlightPiece/SpotlightPiece";
 
 export default function SpotlightPage({ data }) {

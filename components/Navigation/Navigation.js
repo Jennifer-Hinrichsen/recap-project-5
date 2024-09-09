@@ -1,32 +1,35 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function Navigation() {
+export default function Navigation({ className }) {
   return (
-    <StyledNavContainer>
+    <nav className={className}>
       <StyledNavList>
         <StyledNavListItem>
-          <Link href="#">Spotlight</Link>
+          <StyledLink href="#">Spotlight</StyledLink>
         </StyledNavListItem>
         <StyledNavListItem>
-          <Link href="#">Art Pieces</Link>
+          <StyledLink href="/art-pieces">Art Pieces</StyledLink>
         </StyledNavListItem>
         <StyledNavListItem>
-          <Link href="#">Favorites</Link>
+          <StyledLink href="#">Favorites</StyledLink>
         </StyledNavListItem>
       </StyledNavList>
-    </StyledNavContainer>
+    </nav>
   );
 }
 
-const StyledNavContainer = styled.div`
-  display: flex;
-`;
-
 const StyledNavList = styled.ul`
+  display: flex;
   padding: 0;
+  gap: 50px;
+  justify-content: space-around;
 `;
 
 const StyledNavListItem = styled.li`
   list-style-type: none;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
