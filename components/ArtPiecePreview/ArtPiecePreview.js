@@ -13,8 +13,8 @@ export default function ArtPiecePreview({
 }) {
   return (
     <Container>
-      <ImageWrapper>
-        <Image
+      <ArtFrame>
+        <StyledImage
           src={image}
           height={height}
           width={width}
@@ -24,17 +24,29 @@ export default function ArtPiecePreview({
           isFavorite={isFavorite}
           onToggleFavorite={onToggleFavorite}
         />
-      </ImageWrapper>
+      </ArtFrame>
       <h3>{title}</h3>
       <p>{artist}</p>
     </Container>
   );
 }
 
+
 const Container = styled.div`
   text-align: center;
 `;
-const ImageWrapper = styled.div`
-  position: relative;
+
+const ArtFrame = styled.div`
   display: inline-block;
+  padding: 10px;
+  border: 16px solid #a28834;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  position: relative;
+`;
+
+const StyledImage = styled(Image)`
+  display: block;
+  max-width: 100%;
+  height: auto;
 `;
