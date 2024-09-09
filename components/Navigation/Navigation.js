@@ -1,32 +1,40 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function Navigation({ className }) {
+export default function Navigation() {
   return (
-    <nav className={className}>
-      <StyledNavList>
-        <StyledNavListItem>
+    <Nav>
+      <NavList>
+        <NavListItem>
           <StyledLink href="/">Spotlight</StyledLink>
-        </StyledNavListItem>
-        <StyledNavListItem>
+        </NavListItem>
+        <NavListItem>
           <StyledLink href="/art-pieces">Art Pieces</StyledLink>
-        </StyledNavListItem>
-        <StyledNavListItem>
+        </NavListItem>
+        <NavListItem>
           <StyledLink href="#">Favorites</StyledLink>
-        </StyledNavListItem>
-      </StyledNavList>
-    </nav>
+        </NavListItem>
+      </NavList>
+    </Nav>
   );
 }
 
-const StyledNavList = styled.ul`
+const Nav = styled.nav`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgrey;
+  z-index: 1000;
+`;
+
+const NavList = styled.ul`
   display: flex;
   padding: 0;
   gap: 50px;
   justify-content: space-around;
 `;
 
-const StyledNavListItem = styled.li`
+const NavListItem = styled.li`
   list-style-type: none;
 `;
 
