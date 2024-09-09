@@ -40,4 +40,8 @@ const NavListItem = styled.li`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
