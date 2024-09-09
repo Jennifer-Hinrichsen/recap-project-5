@@ -32,6 +32,7 @@ const ArtFrame = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-display: block;
-max-width: 100%,
-height: auto;`;
+  display: block;
+  max-width: 100%;
+  height: auto;
+`;
