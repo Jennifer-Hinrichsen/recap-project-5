@@ -1,12 +1,11 @@
 import ArtPieceDetails from "@/components/ArtPieceDetails/ArtPieceDetails";
 import { useRouter } from "next/router";
 
-
-export default function ArtPiecePage() {
+export default function ArtPiecePage({ data }) {
   const router = useRouter();
   const { slug } = router.query;
 
-  const artPiece = /*artPiecesData*/.find((piece) => piece.slug === slug);
+  const artPiece = data.find((piece) => piece.slug === slug);
 
   return (
     <ArtPieceDetails
