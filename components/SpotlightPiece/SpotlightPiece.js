@@ -1,5 +1,5 @@
-import Image from "next/image";
 import styled from "styled-components";
+import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 
 export default function SpotlightPiece({ pieces }) {
   function getRandomElement(array) {
@@ -9,14 +9,13 @@ export default function SpotlightPiece({ pieces }) {
   const randomArtPiece = getRandomElement(pieces);
   return (
     <StyledSpotlightContainer>
-      <Image
-        src={randomArtPiece.imageSource}
+      <ArtPiecePreview
+        image={randomArtPiece.imageSource}
+        title={randomArtPiece.name}
+        artist={randomArtPiece.artist}
         height={288}
         width={288}
-        alt={`Picture of ${randomArtPiece.name}`}
       />
-      <h3>{randomArtPiece.name}</h3>
-      <p>{randomArtPiece.artist}</p>
     </StyledSpotlightContainer>
   );
 }
