@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
+import { useArtPieces } from "../UseArtPieces/UseArtPieces";
 
 export default function SpotlightPiece({ pieces }) {
+  const { artPieces } = useArtPieces();
+
   function getRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  const randomArtPiece = getRandomElement(pieces);
+  const randomArtPiece = getRandomElement(artPieces);
   return (
     <StyledSpotlightContainer>
       <ArtPiecePreview
