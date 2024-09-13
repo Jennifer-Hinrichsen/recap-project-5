@@ -1,29 +1,43 @@
 import styled from "styled-components";
-import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
-import { useArtPieces } from "../UseArtPieces/UseArtPieces";
+import FavoriteButton from "../FavoriteButton/FavoriteButton.js";
+import Image from "next/image";
 
-export default function SpotlightPiece({ pieces }) {
-  const { artPieces } = useArtPieces();
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 25rem;
+`;
 
-  function getRandomElement(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
+const Wrapper = styled.div`
+  text-align: center;
+  display: grid;
+  place-items: center;
+`;
 
-  const randomArtPiece = getRandomElement(artPieces);
+export default function Spotlight({
+  image,
+  artist,
+  onToggleFavorite,
+  isFavorite,
+}) {
   return (
-    <StyledSpotlightContainer>
-      <ArtPiecePreview
-        image={randomArtPiece.imageSource}
-        title={randomArtPiece.name}
-        artist={randomArtPiece.artist}
-        height={288}
-        width={288}
-      />
-    </StyledSpotlightContainer>
+    <Wrapper>
+      <ImageContainer>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+          positionAbsolute={true}
+        />
+        <Image
+          src={image}
+          fill
+          sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+          alt={`spotlight: ${artist}`}
+        />
+      </ImageContainer>
+      <h2>{artist}</h2>
+    </Wrapper>
   );
 }
-const StyledSpotlightContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;

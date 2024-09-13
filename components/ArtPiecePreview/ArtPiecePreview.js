@@ -16,8 +16,8 @@ export default function ArtPiecePreview({
       <ArtFrame>
         <StyledImage
           src={image}
-          height={height}
-          width={width}
+          height={200}
+          width={200}
           alt={`Picture of ${title}`}
         />
         <FavoriteButton
@@ -30,7 +30,6 @@ export default function ArtPiecePreview({
     </Container>
   );
 }
-
 
 const Container = styled.div`
   text-align: center;

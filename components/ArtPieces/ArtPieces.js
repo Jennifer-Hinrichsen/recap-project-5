@@ -1,41 +1,39 @@
 import styled from "styled-components";
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
-import { useArtPieces } from "../UseArtPieces/UseArtPieces";
-import Link from "next/link";
 
-export default function ArtPieces({ pieces }) {
-  const { artPieces, artPiecesInfo, handleToggleFavorite, loading, error } =
-    useArtPieces();
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error loading.</p>;
-
-
+export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
   return (
-    <>
-      <ul>
-        {artPieces.map((piece) => {
-          const isFavorite = artPiecesInfo?.[piece.slug]?.isFavorite || false;
-          return (
-            <StyledList key={piece.slug}>
-              <Link href={`/art-pieces/${piece.slug}`}>
-                <ArtPiecePreview
-                image={piece.imageSource}
-                title={piece.name}
-                artist={piece.artist}
-                height={144}
-                width={144}
-                isFavorite={isFavorite}
-                onToggleFavorite={() => handleToggleFavorite(piece.slug)}
-              />
-              </Link>
-            </StyledList>
-          );
-        })}
-      </ul>
-    </>
+    <StyledList>
+      {pieces?.map((piece) => (
+        <li key={piece.slug}>
+          <ArtPiecePreview
+            title={piece.name}
+            image={piece.imageSource}
+            artist={piece.artist}
+            slug={piece.slug}
+            isFavorite={
+              artPiecesInfo?.find((artPiece) => artPiece.slug === piece.slug)
+                ?.isFavorite
+            }
+            onToggleFavorite={() => onToggleFavorite(piece.slug)}
+          />
+        </li>
+      ))}
+    </StyledList>
   );
 }
-const StyledList = styled.li`
-  list-style-type: none;
+const StyledList = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+
+  li {
+    width: 30rem;
+    min-width: 10rem;
+    height: 30rem;
+  }
 `;

@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import GlobalStyle from "../styles";
 import Layout from "@/components/Layout/Layout";
+import useLocalStorageState from "use-local-storage-state";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -19,6 +20,10 @@ async function fetcher(url) {
 
 export default function App({ Component, pageProps }) {
   const { data, isLoading, error } = useSWR(URL, fetcher);
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: [] }
+  );
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -27,12 +32,29 @@ export default function App({ Component, pageProps }) {
     return <h1>Error: {error}</h1>;
   }
 
+  function handleToggleFavorite(slug) {
+    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+    if (artPiece) {
+      setArtPiecesInfo(
+        artPiecesInfo.map((pieceInfo) =>
+          pieceInfo.slug === slug
+            ? { slug, isFavorite: !pieceInfo.isFavorite }
+            : pieceInfo
+        )
+      );
+    } else {
+      setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
+    }
+  }
   return (
-    <>
+    <Layout>
       <GlobalStyle />
-      <Layout>
-        <Component {...pageProps} data={data} />
-      </Layout>
-    </>
+      <Component
+        {...pageProps}
+        pieces={isLoading || error ? [] : data}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={handleToggleFavorite}
+      />
+    </Layout>
   );
 }
