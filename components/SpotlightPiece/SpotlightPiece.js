@@ -23,11 +23,6 @@ export default function Spotlight({
   return (
     <Wrapper>
       <ImageContainer>
-        <FavoriteButton
-          isFavorite={isFavorite}
-          onToggleFavorite={onToggleFavorite}
-          positionAbsolute={true}
-        />
         <Image
           src={image}
           fill

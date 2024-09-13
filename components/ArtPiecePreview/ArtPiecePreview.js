@@ -6,8 +6,6 @@ export default function ArtPiecePreview({
   image,
   title,
   artist,
-  height,
-  width,
   isFavorite,
   onToggleFavorite,
 }) {
